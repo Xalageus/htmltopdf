@@ -1,0 +1,16 @@
+html, body {
+    background-color: #1a1a1a;
+    color: azure;
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+}
+
+.textbox {
+    width: 100%;
+}

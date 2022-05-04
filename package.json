@@ -1,0 +1,107 @@
+{
+  "name": "htmltopdf",
+  "version": "0.1.0",
+  "description": "Convert html documents to pdf using chromium",
+  "homepage": "https://github.com/xalageus/htmltopdf",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-builder",
+    "dist-dir": "electron-builder --dir",
+    "dist-dir-w": "electron-builder --dir -w",
+    "dist-l": "electron-builder -l",
+    "dist-w": "electron-builder -w",
+    "dist-m": "electron-builder -m",
+    "dist-all": "electron-builder -mwl",
+    "pkg-l": "pkg -t latest-linux-x64 -o dist-cli/linux/htmltopdf-cli -C Brotli --public cli.js",
+    "pkg-w": "pkg -t latest-win-x64 -o dist-cli/win/htmltopdf-cli -C Brotli --public cli.js",
+    "pkg-m": "pkg -t latest-macos-x64 -o dist-cli/macos/htmltopdf-cli -C Brotli --public cli.js"
+  },
+  "author": "Xalageus <xalageus@gmail.com> (https://github.com/xalageus)",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "got": "^11.8.3",
+    "jquery": "^3.6.0",
+    "puppeteer-core": "^13.7.0",
+    "yargs": "^17.4.1"
+  },
+  "devDependencies": {
+    "electron": "^18.2.0",
+    "electron-builder": "^23.0.3",
+    "eslint": "^8.14.0",
+    "pkg": "^5.6.0"
+  },
+  "build": {
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "appId": "xalageus.htmltopdf",
+    "compression": "maximum",
+    "files": [
+      "!build-node_modules",
+      "!dist-cli",
+      "!dist",
+      "!build.sh",
+      "!package.json",
+      "!.eslintrc.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "extraFiles": {
+        "from": "dist-cli/win/htmltopdf-cli.exe",
+        "to": "."
+      }
+    },
+    "mac": {
+      "target": {
+        "target": "pkg",
+        "arch": [
+          "x64"
+        ]
+      },
+      "extraFiles": {
+        "from": "dist-cli/macos/htmltopdf-cli",
+        "to": "MacOS/"
+      }
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.bz2",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "extraFiles": {
+        "from": "dist-cli/linux/htmltopdf-cli",
+        "to": "."
+      }
+    }
+  }
+}

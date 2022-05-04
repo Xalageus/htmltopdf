@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="style.css">
+    <!-- Is this safe? ¯\_(ツ)_/¯ -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <title>HTMLtoPDF</title>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" name="url" placeholder="URL" id="url-input" class="textbox"><br>
+      <button type="button" id="showHideOptionsBtn">Options</button>
+      <div class="options-container" hidden="true">
+        <input type="checkbox" id="ril-input" name="ril">
+        <label for="ril-input">Remove internal links</label><br>
+        <input type="checkbox" id="rel-input" name="rel">
+        <label for="rel-input">Remove external links</label><br>
+        <input type="text" name="rlc" placeholder="Remove links containing" id="rlc-input" class="textbox"><br>
+      </div>
+
+      <button type="button" id="createPdfBtn">Create PDF</button>
+    </div>
+
+    <div class="status"></div>
+    
+    <script src="./renderer.js"></script>
+  </body>
+</html>
