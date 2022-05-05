@@ -41,7 +41,6 @@
       "!dist-cli",
       "!dist",
       "!build.sh",
-      "!package.json",
       "!.eslintrc.json"
     ],
     "win": {
