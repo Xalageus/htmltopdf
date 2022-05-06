@@ -50,8 +50,9 @@ function createPdf(path){
         let ril = document.getElementById('ril-input').checked;
         let rel = document.getElementById('rel-input').checked;
         let rlc = cleanArray(document.getElementById('rlc-input').value.split(' '));
+        let pf = document.getElementById('paperFormat-selection').value;
     
-        window.api.convertToPDF(url, path, ril, rel, rlc, printStatus, downloadChromiumStatus);
+        window.api.convertToPDF(url, path, ril, rel, rlc, printStatus, downloadChromiumStatus, pf);
     }
 }
 

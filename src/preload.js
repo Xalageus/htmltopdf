@@ -18,7 +18,7 @@ function connectSavePathCallback(callback){
 
 contextBridge.exposeInMainWorld(
     'api', {
-        convertToPDF: (/** @type {String} */ url, /** @type {String} */ filename, /** @type {Boolean} */ ril, /** @type {Boolean} */ rel, /** @type {Array<String>} */ rlc, /** @type {function} */ callback, /** @type {function} */ dcCallback) => pdf.convertToPDF(url, filename, ril, rel, rlc, callback, dcCallback),
+        convertToPDF: (/** @type {String} */ url, /** @type {String} */ filename, /** @type {Boolean} */ ril, /** @type {Boolean} */ rel, /** @type {Array<String>} */ rlc, /** @type {function} */ callback, /** @type {function} */ dcCallback, /** @type {String} */ paperFormat) => pdf.convertToPDF(url, filename, ril, rel, rlc, callback, dcCallback, paperFormat),
         askSavePath: () => ipcSend('askSavePath', null)
     }
 );

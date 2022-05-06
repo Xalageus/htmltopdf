@@ -30,6 +30,13 @@ const args = yargs(process.argv.slice(2))
                 alias: 'rlc',
                 default: []
             })
+            .option('paper-format', {
+                type: 'string',
+                description: 'Output PDF paper size',
+                alias: 'pf',
+                choices: ['Letter', 'Legal', 'Tabloid', 'Ledger', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+                default: 'A4'
+            })
         }
     })
     .command({
@@ -60,7 +67,7 @@ function downloadChromiumStatus(currentBytes, totalBytes){
 async function main(){
     switch(currentPath){
         case CmdPaths.Default:
-            pdf.convertToPDF(args.url, args.pdfoutput, args.removeInternalLinks, args.removeExternalLinks, args.removeLinksContaining, printStatus, downloadChromiumStatus);
+            pdf.convertToPDF(args.url, args.pdfoutput, args.removeInternalLinks, args.removeExternalLinks, args.removeLinksContaining, printStatus, downloadChromiumStatus, args.paperFormat);
             break;
         case CmdPaths.PrintChromiumVersion:
             console.log(await chpre.getChromiumVersion(downloadChromiumStatus));

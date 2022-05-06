@@ -10,8 +10,9 @@ const chpre = require('./chromium-prepare');
  * @param {Array<String>} rlc 
  * @param {function} callback
  * @param {function} dcCallback
+ * @param {String} paperFormat
  */
-async function convertToPDF(url, filename, ril, rel, rlc, callback, dcCallback){
+async function convertToPDF(url, filename, ril, rel, rlc, callback, dcCallback, paperFormat){
     callback("Loading chromium...");
     let chrome = await chpre.checkChrome(dcCallback);
 
@@ -53,7 +54,7 @@ async function convertToPDF(url, filename, ril, rel, rlc, callback, dcCallback){
     }, ril, rel, rlc);
 
     callback("Generating PDF...");
-    await page.pdf({ path: filename, format: 'a4' });
+    await page.pdf({ path: filename, format: paperFormat });
 
     await browser.close();
     callback("Done.");
