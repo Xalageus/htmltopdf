@@ -35,7 +35,7 @@ const args = yargs(process.argv.slice(2))
                 description: 'Output PDF paper size',
                 alias: 'pf',
                 choices: ['Letter', 'Legal', 'Tabloid', 'Ledger', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
-                default: 'A4'
+                default: 'Letter'
             })
         }
     })
