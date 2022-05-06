@@ -132,3 +132,6 @@ dist
 # Package directories
 build-node_modules
 dist-cli
+
+# Chromium files
+.local-chromium
