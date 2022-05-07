@@ -34,8 +34,23 @@ const args = yargs(process.argv.slice(2))
                 type: 'string',
                 description: 'Output PDF paper size',
                 alias: 'pf',
-                choices: ['Letter', 'Legal', 'Tabloid', 'Ledger', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+                choices: ['Auto', 'Letter', 'Legal', 'Tabloid', 'Ledger', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
                 default: 'Letter'
+            })
+            .option('width', {
+                type: 'string',
+                description: 'Output PDF paper width (Overrides paper format option)',
+                alias: 'w'
+            })
+            .option('height', {
+                type: 'string',
+                description: 'Output PDF paper height (Overrides paper format option)',
+                alias: 'h'
+            })
+            .option('emulate-screen', {
+                type: 'boolean',
+                description: 'Ignores printer modifications',
+                alias: 'es'
             })
         }
     })
@@ -67,7 +82,20 @@ function downloadChromiumStatus(currentBytes, totalBytes){
 async function main(){
     switch(currentPath){
         case CmdPaths.Default:
-            pdf.convertToPDF(args.url, args.pdfoutput, args.removeInternalLinks, args.removeExternalLinks, args.removeLinksContaining, printStatus, downloadChromiumStatus, args.paperFormat);
+            var settings = {
+                removeInternalLinks: args.removeInternalLinks,
+                removeExternalLinks: args.removeExternalLinks,
+                removeLinksContaining: args.removeLinksContaining,
+                paperFormat: args.paperFormat,
+                paperWidth: args.width,
+                paperHeight: args.height,
+                emulateScreen: args.emulateScreen
+            };
+
+            if(args.width || args.height){
+                settings.paperFormat = 'Manual'
+            }
+            pdf.convertToPDF(args.url, args.pdfoutput, printStatus, downloadChromiumStatus, settings);
             break;
         case CmdPaths.PrintChromiumVersion:
             console.log(await chpre.getChromiumVersion(downloadChromiumStatus));
