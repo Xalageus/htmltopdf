@@ -37,7 +37,7 @@ function showHideOptions(){
 }
 
 function showHideManualPaperSizeOptions(){
-    if(document.getElementById('paperFormat-selection').value == 'manual'){
+    if(document.getElementById('paperFormat-selection').value == 'Manual'){
         $('.manualPaperFormat-container:hidden').toggle(500);
     }else{
         $('.manualPaperFormat-container:visible').toggle(500);
