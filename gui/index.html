@@ -14,7 +14,7 @@
     <div class="container">
       <input type="text" name="url" placeholder="URL" id="url-input" class="textbox">
       <br>
-      <button type="button" id="showHideOptionsBtn">Options</button>
+      <button type="button" id="show-hide-options-btn">Options</button>
       <div class="options-container" hidden="true">
         <input type="checkbox" id="ril-input" name="ril">
         <label for="ril-input">Remove internal links</label>
@@ -24,8 +24,8 @@
         <br>
         <input type="text" name="rlc" placeholder="Remove links containing" id="rlc-input" class="textbox">
         <br>
-        <label for="paperFormat-selection">Paper format</label>
-        <select id="paperFormat-selection" name="paperFormat">
+        <label for="paper-format-selection">Paper format</label>
+        <select id="paper-format-selection" name="pf">
           <option value="Auto">Auto</option>
           <option value="Letter" selected>Letter</option>
           <option value="Legal">Legal</option>
@@ -40,17 +40,17 @@
           <option value="A6">A6</option>
           <option value="Manual">Manual</option>
         </select><br>
-        <div class="manualPaperFormat-container" hidden="true">
-          <input type="text" name="paperWidth" placeholder="Paper Width" id="paperWidth-input" class="textbox">
+        <div class="manual-paper-format-container" hidden="true">
+          <input type="text" name="paperWidth" placeholder="Paper Width" id="paper-width-input" class="textbox">
           <br>
-          <input type="text" name="paperHeight" placeholder="Paper Height" id="paperHeight-input" class="textbox">
+          <input type="text" name="paperHeight" placeholder="Paper Height" id="paper-height-input" class="textbox">
           <br>
         </div>
         <input type="checkbox" id="es-input" name="es">
         <label for="es-input">Capture as screen</label>
       </div>
 
-      <button type="button" id="createPdfBtn">Create PDF</button>
+      <button type="button" id="create-pdf-btn">Create PDF</button>
     </div>
 
     <div class="status"></div>

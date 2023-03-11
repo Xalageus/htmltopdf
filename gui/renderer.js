@@ -1,8 +1,8 @@
 const $ = window.$;
 
-document.getElementById('createPdfBtn').addEventListener('click', getSavePath);
-document.getElementById('showHideOptionsBtn').addEventListener('click', showHideOptions);
-document.getElementById('paperFormat-selection').addEventListener('change', showHideManualPaperSizeOptions);
+document.getElementById('create-pdf-btn').addEventListener('click', getSavePath);
+document.getElementById('show-hide-options-btn').addEventListener('click', showHideOptions);
+document.getElementById('paper-format-selection').addEventListener('change', showHideManualPaperSizeOptions);
 
 /**
  * @param {Array} arr1
@@ -37,10 +37,10 @@ function showHideOptions(){
 }
 
 function showHideManualPaperSizeOptions(){
-    if(document.getElementById('paperFormat-selection').value == 'Manual'){
-        $('.manualPaperFormat-container:hidden').toggle(500);
+    if(document.getElementById('paper-format-selection').value == 'Manual'){
+        $('.manual-paper-format-container:hidden').toggle(500);
     }else{
-        $('.manualPaperFormat-container:visible').toggle(500);
+        $('.manual-paper-format-container:visible').toggle(500);
     }
 }
 
@@ -59,9 +59,9 @@ function createPDF(path){
         let ril = document.getElementById('ril-input').checked;
         let rel = document.getElementById('rel-input').checked;
         let rlc = cleanArray(document.getElementById('rlc-input').value.split(' '));
-        let pf = document.getElementById('paperFormat-selection').value;
-        let pw = document.getElementById('paperWidth-input').value;
-        let ph = document.getElementById('paperHeight-input').value;
+        let pf = document.getElementById('paper-format-selection').value;
+        let pw = document.getElementById('paper-width-input').value;
+        let ph = document.getElementById('paper-height-input').value;
         let es = document.getElementById('es-input').checked;
 
         let settings = {
