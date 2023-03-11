@@ -1,6 +1,6 @@
 {
   "name": "htmltopdf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert html documents to pdf using chromium",
   "homepage": "https://github.com/xalageus/htmltopdf",
   "main": "index.js",
