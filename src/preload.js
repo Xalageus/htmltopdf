@@ -12,10 +12,6 @@ function ipcSend(channel, data){
     }
 }
 
-function connectSavePathCallback(callback){
-    receiveSavePathCall = callback;
-}
-
 contextBridge.exposeInMainWorld(
     'api', {
         convertToPDF: (/** @type {String} */ url, /** @type {String} */ filename, /** @type {function} */ callback, /** @type {function} */ dcCallback, /** @type {typeof pdf.defaults} */ options) => pdf.convertToPDF(url, filename, callback, dcCallback, options),
@@ -25,7 +21,7 @@ contextBridge.exposeInMainWorld(
 
 contextBridge.exposeInMainWorld(
     'callbackConnect', {
-        receiveSavePath: (/** @type {function} */ callback) => connectSavePathCallback(callback)
+        receiveSavePath: (/** @type {function} */ callback) => receiveSavePathCall = callback
     }
 )
 
