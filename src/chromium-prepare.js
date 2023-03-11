@@ -7,13 +7,22 @@ const browserFetcher = puppeteer.createBrowserFetcher({path: './.local-chromium'
 
 const MAX_REVISION_CHECK = 50;
 
-async function getLatestChromiumRevision(){
-    let res = await got('https://omahaproxy.appspot.com/deps.json', {responseType: 'json'});
-    return res.body.chromium_base_position;
+async function getLatestStableChromiumRevision(){
+    let res = await got('https://chromiumdash.appspot.com/fetch_milestones?only_branched=true', {responseType: 'json'});
+    //Guessing that second pos is always stable?
+    let pos = res.body[1].chromium_main_branch_position
+
+    for(let i = 0; i < res.body.length; i++){
+        if(res.body[i].schedule_active && res.body[i].schedule_phase == 'stable'){
+            pos = res.body[i].chromium_main_branch_position;
+        }
+    }
+
+    return pos;
 }
 
 async function downloadChrome(callback){
-    let revision = parseInt(await getLatestChromiumRevision());
+    let revision = parseInt(await getLatestStableChromiumRevision());
     let maxRevision = revision + MAX_REVISION_CHECK;
 
     //Find the artifact for the given revision
