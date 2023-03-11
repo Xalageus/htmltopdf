@@ -135,3 +135,6 @@ dist-cli
 
 # Chromium files
 .local-chromium
+
+# VSCode
+.vscode
