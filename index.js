@@ -6,9 +6,10 @@ function createWindow () {
     width: 700,
     height: 400,
     webPreferences: {
-      preload: path.join(__dirname, 'src/preload.js'),
+      preload: path.join(app.getAppPath(), 'src/preload.js'),
       nodeIntegration: false,
       contextIsolation: true,
+      sandbox: false,
     }
   });
 
